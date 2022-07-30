@@ -9,43 +9,43 @@ import "bootstrap/dist/js/bootstrap.js";
 import ryu from "./../assets/img/ryu.png";
 import kanna from "./../assets/img/kanna.jpg";
 import hiQ from "./../assets/img/hiQ.jpg";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
-const navigate = useNavigate();
-
-const goSudo = () => {
-  navigate("/sudotype");
-};
-
-const Home = () => (
-  <div>
-    <Container className="flex">
-      <Row>
-        <Col xs={6} className="one">
-          <h1 className="header">Lorem ipsum waku waku</h1>
-          <h4>Insert how scientific our stuff is</h4>
-          <h4 className="randomGame">start random game</h4>
-        </Col>
-        <Col xs={2} className="two">
-          <img src={ryu} className="img-responsive" width="100%" />
-          uso
-        </Col>
-        <Col xs={2} className="three">
-          <img
-            src={kanna}
-            className="img-responsive"
-            width="100%"
-            onClick={() => goSudo()}
-          />
-          psudo-type
-        </Col>
-        <Col xs={2} className="four">
-          <img src={hiQ} className="img-responsive" width="100%" />
-          strroop
-        </Col>
-      </Row>
-    </Container>
-  </div>
-);
+function Home() {
+  const navigate = useNavigate();
+  const goSudo = () => {
+    navigate("/sudotype");
+  };
+  return (
+    <div>
+      <Container className="flex">
+        <Row>
+          <Col xs={6} className="one">
+            <h1 className="header">Lorem ipsum waku waku</h1>
+            <h4>Insert how scientific our stuff is</h4>
+            <h4 className="randomGame">start random game</h4>
+          </Col>
+          <Col xs={2} className="two">
+            <img src={ryu} className="img-responsive" width="100%" />
+            uso
+          </Col>
+          <Col xs={2} className="three">
+            <img
+              src={kanna}
+              className="img-responsive"
+              width="100%"
+              onClick={() => goSudo()}
+            />
+            psudo-type
+          </Col>
+          <Col xs={2} className="four">
+            <img src={hiQ} className="img-responsive" width="100%" />
+            strroop
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
+}
 
 export default Home;
