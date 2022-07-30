@@ -21,6 +21,7 @@ const App = () => {
 
         <Route path="/sudotype" element={<SudoType />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/menu-sudo" element={<Menu title="Sudotype" />} />
       </Routes>
     </MemoryRouter>
   );

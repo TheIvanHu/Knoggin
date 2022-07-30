@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const navigate = useNavigate();
   const goSudo = () => {
-    navigate("/sudotype");
+    navigate("/menu-sudo");
   };
   return (
     <div>
