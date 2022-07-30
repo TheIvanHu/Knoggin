@@ -1,9 +1,8 @@
 import * as React from "react";
 import "./styles.scss";
-import { useNavigate } from "react-router-dom";
 import { textToMatch, keys } from "./constants";
 
-const KeyBox: React.FC<any> = ({ letter }) => {
+const KeyBox: React.FC<any> = ({ letter, addUnderline }) => {
   return (
     <div
       style={{
@@ -12,6 +11,7 @@ const KeyBox: React.FC<any> = ({ letter }) => {
         padding: "5px",
         width: "50px",
         textAlign: "center",
+        textDecoration: addUnderline ? "underline" : "none",
       }}
     >
       {letter.toUpperCase()}
@@ -19,7 +19,13 @@ const KeyBox: React.FC<any> = ({ letter }) => {
   );
 };
 
-const KeyRow: React.FC<any> = ({ keys }) => {
+interface KeyRowProps {
+  keys: string[];
+  addUnderline?: boolean;
+  style?: React.CSSProperties;
+}
+
+const KeyRow: React.FC<KeyRowProps> = ({ keys, addUnderline, style }) => {
   return (
     <div
       style={{
@@ -27,9 +33,15 @@ const KeyRow: React.FC<any> = ({ keys }) => {
         flexDirection: "row",
         gap: "10px",
         marginBottom: "10px",
+        ...style,
       }}
     >
       {keys.map((letter, key) => {
+        const underline = key == 3 || key == 6 ? addUnderline : false;
+        if (addUnderline) {
+          return <KeyBox key={key} letter={letter} addUnderline={underline} />;
+        }
+
         return <KeyBox key={key} letter={letter} />;
       })}
     </div>
@@ -37,15 +49,20 @@ const KeyRow: React.FC<any> = ({ keys }) => {
 };
 
 const KeyBoard: React.FC<any> = ({ randomKeys }) => {
-  let firstTenKeys = randomKeys.slice(0, 10);
-  let secondNineKeys = randomKeys.slice(10, 19);
-  let thirdSevenKeys = randomKeys.slice(19, 26);
+  let first = randomKeys.slice(0, 10);
+  let second = randomKeys.slice(10, 19);
+  let third = randomKeys.slice(19, 26);
 
   return (
     <>
-      <KeyRow keys={firstTenKeys} />
-      <KeyRow keys={secondNineKeys} />
-      <KeyRow keys={thirdSevenKeys} />
+      <KeyRow keys={first} />
+      <KeyRow keys={second} addUnderline />
+      <KeyRow
+        keys={third}
+        style={{
+          transform: "translate(-30px, 0)",
+        }}
+      />
     </>
   );
 };
@@ -78,6 +95,12 @@ const SudoType: React.FC = () => {
       return;
     }
 
+    const isAlphabet = /[a-zA-Z0-9-_ ]/.test(String.fromCharCode(e.keyCode));
+
+    if (!isAlphabet) {
+      return;
+    }
+
     let convertedKey;
     if (e.key === " ") {
       convertedKey = " ";
@@ -100,6 +123,11 @@ const SudoType: React.FC = () => {
     // Check if the new correct text is the same as the text to match
     if (textToMatch.indexOf(newCorrectText) === 0) {
       setCorrectText(newCorrectText);
+
+      if (newCorrectText.length === textToMatch.length) {
+        setIsGameOver(true);
+        calculateWpm();
+      }
     } else if (/[a-zA-Z0-9-_ ]/.test(String.fromCharCode(e.keyCode))) {
       setAmountOfWrongLetters(amountOfWrongLetters + 1);
     }
@@ -116,9 +144,19 @@ const SudoType: React.FC = () => {
     setRandomKeys(copyKeys.sort(() => Math.random() - 0.5));
   }, []);
 
+  React.useEffect(() => {
+    if (isGameOver) {
+      setIsGameStarted(false);
+
+      console.log("Wpm: ", wpm);
+      console.log("Characters wrong: ", amountOfWrongLetters);
+    }
+  }, [isGameOver]);
+
   return (
     <div id="home">
-      <p>SudoType</p>
+      <h2>SudoType</h2>
+      <br />
 
       <div
         style={{
@@ -136,6 +174,7 @@ const SudoType: React.FC = () => {
       <br />
 
       <input
+        autoFocus
         className="input-race"
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
@@ -143,10 +182,15 @@ const SudoType: React.FC = () => {
         // onChange={value => this.handleChange(value)}
         // maxLength={quote.length}
         // disabled={disabled || finished}
+        style={{
+          border: "none",
+          outline: "none",
+          height: "50px",
+        }}
       />
 
-      <p> {amountOfWrongLetters} </p>
-      <p> {wpm} </p>
+      <br />
+      <br />
 
       <KeyBoard randomKeys={randomKeys} />
     </div>
