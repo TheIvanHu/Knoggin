@@ -1,26 +1,8 @@
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
-import "../assets/scss/Menu.css";
-import styled from "styled-components";
 
 import { Component } from "react";
-
-// const Container = styled.div`
-//   display: flex;
-// `;
-
-// const Pane = styled.div`
-//   flex: ${(props) => props.weight};
-// `;
-
-// const LeftHandComponent = ({ name }) => {
-//   return <h1 style={{ backgroundColor: "green" }}>{name}</h1>;
-// };
-
-// const RightHandComponent = ({ message }) => {
-//   return <p style={{ backgroundColor: "red" }}>{message}!</p>;
-// };
 
 class Menu extends Component {
   render() {
@@ -53,5 +35,4 @@ class Menu extends Component {
     );
   }
 }
-
 export default Menu;
