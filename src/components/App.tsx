@@ -7,6 +7,7 @@ const App = () => (
   <div className="app">
     <h1>Hello World!</h1>
     <p>Foo to the barz</p>
+    <p> lol</p>
     <img src={reactLogo.default} height="480" />
   </div>
 );
