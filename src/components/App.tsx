@@ -3,7 +3,7 @@ import "./../assets/scss/App.scss";
 
 const App = () => (
   <div className="app">
-    <h1>Hello World!</h1>
+    <h1>Goodbye World!</h1>
     <p>Foo to the barz</p>
   </div>
 );
