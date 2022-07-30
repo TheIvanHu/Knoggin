@@ -9,7 +9,7 @@ import {
 import { MemoryRouter, Outlet, useLocation } from "react-router";
 
 import Home from "./Home";
-import SudoType from "./SudoType";
+import SudoType from "../pages/SudoType";
 
 const App = () => {
   const initialSearchParam = new URLSearchParams(window.location.search);
