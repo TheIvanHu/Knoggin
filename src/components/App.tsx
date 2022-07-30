@@ -1,11 +1,22 @@
 import * as React from "react";
 import "./../assets/scss/App.scss";
+import {
+  BrowserRouter as Router,
+  NavLink,
+  Routes,
+  Route,
+} from "react-router-dom";
 
-const App = () => (
-  <div className="app">
-    <h1>Goodbye World!</h1>
-    <p>Foo to the barz</p>
-  </div>
-);
+import Home from "./Home";
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="" element={<Home />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
