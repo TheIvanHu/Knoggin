@@ -9,10 +9,10 @@ import "bootstrap/dist/js/bootstrap.js";
 
 const Home = () => (
   <div>
-    <Container>
+    <Container className="flex">
       <Row>
         <Col xs={6} className="one">
-          title thing
+          <h1 className="header">Lorem ipsum waku waku</h1>
         </Col>
         <Col xs={2} className="two">
           uso
