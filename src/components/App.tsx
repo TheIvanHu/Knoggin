@@ -7,7 +7,6 @@ import {
   Route,
 } from "react-router-dom";
 import { MemoryRouter, Outlet, useLocation } from "react-router";
-
 import Home from "./Home";
 import SudoType from "../pages/SudoType";
 import Menu from "./Menu";

@@ -1,0 +1,45 @@
+.one {
+    padding-top: 30vh;
+}
+
+.two {
+    padding-top: 32vh;
+}
+
+.three {
+    padding-top: 32vh;
+}
+
+.four {
+    padding-top: 32vh;
+}
+
+.header {
+    font-size: 4vw;
+    font-weight: bold;
+}
+
+.flex {
+    vertical-align: middle;
+    text-align: center;
+    left: "50%";
+    top: "50%"; 
+    transform: "translate(-50%, -50%)" 
+}
+
+.randomGame {
+    padding-top: 15px;
+}
+
+.randomGame:hover {
+    cursor: pointer;
+    color: #b2d4c9;
+}
+
+.title {
+    margin-top: 10px;
+}
+
+img:hover {
+    cursor: pointer;
+}
