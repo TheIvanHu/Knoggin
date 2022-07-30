@@ -1,25 +1,63 @@
 import * as React from "react";
 import "./styles.scss";
 import { useNavigate } from "react-router-dom";
+import { textToMatch, keys } from "./constants";
 
-const textToMatch =
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+const KeyBox: React.FC<any> = ({ letter }) => {
+  return (
+    <div
+      style={{
+        border: "1px solid black",
+        borderRadius: "5px",
+        padding: "5px",
+        width: "50px",
+        textAlign: "center",
+      }}
+    >
+      {letter.toUpperCase()}
+    </div>
+  );
+};
 
-const isLetter = (key) => key >= "a" && key <= "z";
+const KeyRow: React.FC<any> = ({ keys }) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        gap: "10px",
+        marginBottom: "10px",
+      }}
+    >
+      {keys.map((letter, key) => {
+        return <KeyBox key={key} letter={letter} />;
+      })}
+    </div>
+  );
+};
 
-const KeyBox: React.FC = () => {
-  return null;
+const KeyBoard: React.FC<any> = ({ randomKeys }) => {
+  let firstTenKeys = randomKeys.slice(0, 10);
+  let secondNineKeys = randomKeys.slice(10, 19);
+  let thirdSevenKeys = randomKeys.slice(19, 26);
+
+  return (
+    <>
+      <KeyRow keys={firstTenKeys} />
+      <KeyRow keys={secondNineKeys} />
+      <KeyRow keys={thirdSevenKeys} />
+    </>
+  );
 };
 
 const SudoType: React.FC = () => {
-  const navigate = useNavigate();
-
   const [correctText, setCorrectText] = React.useState("");
   const [amountOfWrongLetters, setAmountOfWrongLetters] = React.useState(0);
   const [wpm, setWpm] = React.useState(0);
   const [isGameOver, setIsGameOver] = React.useState(false);
   const [isGameStarted, setIsGameStarted] = React.useState(false);
   const [startTime, setStartTime] = React.useState(0);
+  const [randomKeys, setRandomKeys] = React.useState([]);
 
   const calculateWpm = () => {
     const time = Date.now() - startTime;
@@ -33,16 +71,37 @@ const SudoType: React.FC = () => {
       setStartTime(Date.now());
     }
 
+    if (!e.key) return;
+
     if (e.key === "Backspace") {
       setCorrectText(correctText.slice(0, -1));
+      return;
+    }
+
+    let convertedKey;
+    if (e.key === " ") {
+      convertedKey = " ";
     } else {
-      const newCorrectText = correctText + e.key;
-      // Check if the new correct text is the same as the text to match
-      if (textToMatch.indexOf(newCorrectText) === 0) {
-        setCorrectText(newCorrectText);
-      } else if (/[a-zA-Z0-9-_ ]/.test(String.fromCharCode(e.keyCode))) {
+      const isUppercase = e.key.toUpperCase() === e.key;
+
+      const keyIndex = keys.indexOf(e.key.toLowerCase());
+
+      if (!randomKeys[keyIndex]) {
         setAmountOfWrongLetters(amountOfWrongLetters + 1);
+        return;
       }
+
+      convertedKey = isUppercase
+        ? randomKeys[keyIndex].toUpperCase()
+        : randomKeys[keyIndex];
+    }
+
+    const newCorrectText = correctText + convertedKey;
+    // Check if the new correct text is the same as the text to match
+    if (textToMatch.indexOf(newCorrectText) === 0) {
+      setCorrectText(newCorrectText);
+    } else if (/[a-zA-Z0-9-_ ]/.test(String.fromCharCode(e.keyCode))) {
+      setAmountOfWrongLetters(amountOfWrongLetters + 1);
     }
 
     calculateWpm();
@@ -51,6 +110,11 @@ const SudoType: React.FC = () => {
   const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.target.value = "";
   };
+
+  React.useEffect(() => {
+    const copyKeys = keys.slice(0);
+    setRandomKeys(copyKeys.sort(() => Math.random() - 0.5));
+  }, []);
 
   return (
     <div id="home">
@@ -83,6 +147,8 @@ const SudoType: React.FC = () => {
 
       <p> {amountOfWrongLetters} </p>
       <p> {wpm} </p>
+
+      <KeyBoard randomKeys={randomKeys} />
     </div>
   );
 };
