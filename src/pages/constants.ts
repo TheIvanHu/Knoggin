@@ -27,5 +27,5 @@ export const keys = [
   "m",
 ];
 
-export const textToMatch = "Lorem";
-//"Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+export const textToMatch =
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry";

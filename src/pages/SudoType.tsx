@@ -71,6 +71,7 @@ const SudoType: React.FC = () => {
   const [correctText, setCorrectText] = React.useState("");
   const [amountOfWrongLetters, setAmountOfWrongLetters] = React.useState(0);
   const [wpm, setWpm] = React.useState(0);
+  const [cpm, setCpm] = React.useState(0);
   const [isGameOver, setIsGameOver] = React.useState(false);
   const [isGameStarted, setIsGameStarted] = React.useState(false);
   const [startTime, setStartTime] = React.useState(0);
@@ -80,6 +81,12 @@ const SudoType: React.FC = () => {
     const time = Date.now() - startTime;
     const wpm = Math.round(textToMatch.length / 5 / (time / 1000 / 60));
     setWpm(wpm);
+  };
+
+  const calculateCpm = () => {
+    const time = Date.now() - startTime;
+    const cpm = Math.round(textToMatch.length / (time / 1000 / 60));
+    setCpm(cpm);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -126,13 +133,13 @@ const SudoType: React.FC = () => {
 
       if (newCorrectText.length === textToMatch.length) {
         setIsGameOver(true);
-        calculateWpm();
       }
     } else if (/[a-zA-Z0-9-_ ]/.test(String.fromCharCode(e.keyCode))) {
       setAmountOfWrongLetters(amountOfWrongLetters + 1);
     }
 
     calculateWpm();
+    calculateCpm();
   };
 
   const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -149,6 +156,7 @@ const SudoType: React.FC = () => {
       setIsGameStarted(false);
 
       console.log("Wpm: ", wpm);
+      console.log("Cpm: ", cpm);
       console.log("Characters wrong: ", amountOfWrongLetters);
     }
   }, [isGameOver]);
