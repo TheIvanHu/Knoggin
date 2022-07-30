@@ -17,7 +17,7 @@ const App = () => {
   return (
     <MemoryRouter initialEntries={["/", initialPath]}>
       <Routes>
-        <Route path="" element={<Home />} />
+        <Route path="/chart" element={<Chart />} />
 
         <Route path="/sudotype" element={<SudoType />} />
         <Route path="/menu" element={<Menu />} />
