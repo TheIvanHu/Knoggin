@@ -21,13 +21,14 @@ function Home() {
       <Container className="flex">
         <Row>
           <Col xs={6} className="one">
-            <h1 className="header">Lorem ipsum waku waku</h1>
+            <h1 className="header">Knocking on your noggin</h1>
             <h4>Insert how scientific our stuff is</h4>
             <h4 className="randomGame">start random game</h4>
           </Col>
           <Col xs={2} className="two">
             <img src={ryu} className="img-responsive" width="100%" />
-            uso
+            <h5 className="title">uso</h5>
+            <h6>insert cool description</h6>
           </Col>
           <Col xs={2} className="three">
             <img
@@ -36,11 +37,13 @@ function Home() {
               width="100%"
               onClick={() => goSudo()}
             />
-            psudo-type
+            <h5 className="title">sudo-type</h5>
+            <h6>insert cool description</h6>
           </Col>
           <Col xs={2} className="four">
             <img src={hiQ} className="img-responsive" width="100%" />
-            strroop
+            <h5 className="title">strroop</h5>
+            <h6>insert cool description</h6>
           </Col>
         </Row>
       </Container>
