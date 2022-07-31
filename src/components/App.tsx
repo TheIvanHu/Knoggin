@@ -8,9 +8,9 @@ import {
 } from "react-router-dom";
 import { MemoryRouter, Outlet, useLocation } from "react-router";
 import Home from "./Home";
-import SudoType from "../pages/SudoType";
+import Sudotype from "../pages/SudoType";
 import Uso from "../pages/Uso";
-import SudoTypeData from "./SudotypeData";
+import SudotypeData from "./SudotypeData";
 import UsoData from "./UsoData";
 import Menu from "./Menu";
 import StroopData from "./StroopData";
@@ -59,8 +59,8 @@ const App = () => {
   return (
     <MemoryRouter initialEntries={["/", initialPath]}>
       <Routes>
-        <Route path="/sudotype" element={<SudoType />} />
-        <Route path="/SudoType-data" element={<SudoTypeData />} />
+        <Route path="/sudotype" element={<Sudotype />} />
+        <Route path="/Sudotype-data" element={<SudotypeData />} />
         <Route path="/uso" element={<Uso />} />
         <Route path="/Uso-data" element={<UsoData />} />{" "}
         <Route path="/Stroop" element={<Stroop />} />
