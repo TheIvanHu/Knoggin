@@ -8,20 +8,26 @@ export class Game {
   nodes: Node[] = [];
   lastAddedTime: number = Date.now();
 
+  score = 0;
+  lostNodes: number = 0;
+  addedNodes = 0;
+
   pressedKey: string;
 
-  update() {
-    if (Date.now() - this.lastAddedTime > 1000) {
+  update(canvas: HTMLCanvasElement) {
+    if (Date.now() - this.lastAddedTime > 1000 && this.started) {
       this.lastAddedTime = Date.now();
       this.nodes.push(
         new Node(
-          Math.random() * window.innerWidth,
-          Math.random() * window.innerHeight,
+          Math.random() * (canvas.width - 100) + 50,
+          Math.random() * (canvas.height - 100) + 50,
           Math.random() * 10 + 20,
           "red",
           keys[Math.floor(Math.random() * keys.length)],
         ),
       );
+
+      this.addedNodes++;
     }
 
     this.nodes.forEach((node) => {
@@ -31,12 +37,18 @@ export class Game {
 
       if (distance < node.radius + 20 && game.pressedKey === node.letter) {
         node.matched = true;
+        this.score++;
+      }
+
+      if (Date.now() - node.createdAt > node.duration) {
+        node.matched = true;
+        this.lostNodes++;
       }
 
       node.update();
     });
 
-    for (let i = this.nodes.length - 1; i > -0; i--) {
+    for (let i = this.nodes.length - 1; i >= 0; i--) {
       if (this.nodes[i].matched) {
         this.nodes.splice(i, 1);
       }

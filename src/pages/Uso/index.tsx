@@ -23,7 +23,7 @@ const Uso: React.FC = () => {
     canvas.height = window.innerHeight * 0.7;
 
     const update = () => {
-      game.update();
+      game.update(canvas);
     };
 
     const animate = () => {
@@ -73,9 +73,7 @@ const Uso: React.FC = () => {
       .on("keydown", (e) => {
         game.started = true;
 
-        const isAlphabet = /[a-zA-Z0-9-_ ]/.test(
-          String.fromCharCode(e.keyCode),
-        );
+        const isAlphabet = /[a-zA-Z]/.test(String.fromCharCode(e.keyCode));
         if (isAlphabet) {
           game.pressedKey = String.fromCharCode(e.keyCode).toLowerCase();
         }
