@@ -14,6 +14,7 @@ const Menu: React.FC<any> = (props) => {
   const startClick = (name) => {
     switch (name) {
       case "uso":
+        navigate("/uso");
         break;
       case "sudo":
         navigate("/sudotype");
@@ -29,7 +30,7 @@ const Menu: React.FC<any> = (props) => {
         <div className="row align-items-center">
           <div className="col" id="left">
             <h1>{props.title}</h1>
-            <button className="btn" onClick={() => startClick("sudo")}>
+            <button className="btn" onClick={() => startClick(props.name)}>
               Play game :3
             </button>
           </div>
