@@ -21,11 +21,13 @@ export class Game {
 
   pressedKey: string;
 
+  constructor(private readonly maxNodes: number) {}
+
   update(canvas: HTMLCanvasElement) {
     if (
       Date.now() - this.lastAddedTime > 1000 &&
       this.state === GameState.Playing &&
-      this.addedNodes < 20
+      this.addedNodes < this.maxNodes
     ) {
       this.lastAddedTime = Date.now();
       this.nodes.push(
@@ -35,13 +37,14 @@ export class Game {
           Math.random() * 10 + 20,
           "red",
           keys[Math.floor(Math.random() * keys.length)],
+          5000 - this.addedNodes * 100,
         ),
       );
 
       this.addedNodes++;
     }
 
-    if (this.addedNodes >= 20 && this.nodes.length === 0) {
+    if (this.addedNodes >= this.maxNodes && this.nodes.length === 0) {
       this.state = GameState.GameOver;
     }
 
@@ -103,6 +106,17 @@ export class Game {
         ctx,
         "Game Over",
         canvas.width / 2,
+        canvas.height / 2 - 100,
+        "30px Outfit",
+        "white",
+      );
+
+      drawText(
+        ctx,
+        "Completion rate: " +
+          Math.floor((game.score / game.maxNodes) * 100) +
+          "%",
+        canvas.width / 2,
         canvas.height / 2,
         "30px Outfit",
         "white",
@@ -111,6 +125,6 @@ export class Game {
   }
 }
 
-const game = new Game();
+const game = new Game(40);
 
 export default game;

@@ -1,4 +1,5 @@
 import { drawCircle, drawText } from "./helper";
+import { clamp } from "lodash";
 
 export default class Node {
   createdAt: number = Date.now();
@@ -8,7 +9,7 @@ export default class Node {
   color: string;
   letter: string;
 
-  duration = 1000;
+  duration: number;
 
   matched: boolean;
 
@@ -18,18 +19,24 @@ export default class Node {
     radius: number,
     color: string,
     letter: string,
+    duration: number = 5000,
   ) {
     this.x = x;
     this.y = y;
     this.radius = radius;
     this.color = color;
     this.letter = letter;
+    this.duration = duration;
   }
 
   update() {}
 
   render(ctx: CanvasRenderingContext2D) {
-    const alpha = 1 - (Date.now() - this.createdAt) / this.duration;
+    const alpha = clamp(
+      1 - (Date.now() - this.createdAt) / this.duration,
+      0,
+      1,
+    );
 
     drawCircle(ctx, this.x, this.y, this.radius, this.color, {
       alpha,
