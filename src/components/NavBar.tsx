@@ -15,15 +15,15 @@ function AppNavBar() {
           <Nav className="me-auto">
             <Nav.Link href="/?path=/uso">Uso</Nav.Link>
             <Nav.Link href="/?path=/sudotype">Sudotype</Nav.Link>
-            <Nav.Link href="/?path=/stroop">Strroop</Nav.Link>
+            <Nav.Link href="/?path=/stroop">Stroop</Nav.Link>
 
             <NavDropdown title="Stats" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="/?path=/Uso-data">Uso</NavDropdown.Item>
               <NavDropdown.Item href="/?path=/Sudotype-data">
                 Sudotype{" "}
               </NavDropdown.Item>
-              <NavDropdown.Item href="/?path=/strroop-data">
-                Strroop
+              <NavDropdown.Item href="/?path=/stroop-data">
+                Stroop
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

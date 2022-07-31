@@ -21,8 +21,8 @@ function Home() {
     navigate("/menu-uso");
   };
 
-  const goStrroop = () => {
-    navigate("/menu-strroop");
+  const goStroop = () => {
+    navigate("/menu-stroop");
   };
 
   return (
@@ -62,11 +62,11 @@ function Home() {
             <h6>insert cool description</h6>
           </Col>
           <Col xs={2} className="four">
-            <div className="strroopLogo" onClick={() => goStrroop()}>
+            <div className="stroopLogo" onClick={() => goStroop()}>
               red
             </div>
-            <h5 className="strroop" onClick={() => goStrroop()}>
-              strroop
+            <h5 className="stroop" onClick={() => goStroop()}>
+              stroop
             </h5>
             <h6>insert cool description</h6>
           </Col>

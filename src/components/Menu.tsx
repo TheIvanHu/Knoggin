@@ -18,7 +18,7 @@ const Menu: React.FC<any> = (props) => {
       case "sudo":
         navigate("/sudotype");
         break;
-      case "strroop":
+      case "stroop":
         break;
     }
   };
