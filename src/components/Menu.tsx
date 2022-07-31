@@ -14,7 +14,6 @@ const Menu: React.FC<any> = (props) => {
   const startClick = (name) => {
     switch (name) {
       case "uso":
-        navigate("/uso");
         break;
       case "sudo":
         navigate("/sudotype");
