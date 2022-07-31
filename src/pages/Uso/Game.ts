@@ -2,8 +2,14 @@ import { keys } from "../SudoType/constants";
 import Node from "./Node";
 import { mouse } from ".";
 
+export enum GameState {
+  Ready,
+  Playing,
+  GameOver,
+}
+
 export class Game {
-  started: boolean;
+  state: GameState = GameState.Ready;
 
   nodes: Node[] = [];
   lastAddedTime: number = Date.now();
@@ -15,7 +21,10 @@ export class Game {
   pressedKey: string;
 
   update(canvas: HTMLCanvasElement) {
-    if (Date.now() - this.lastAddedTime > 1000 && this.started) {
+    if (
+      Date.now() - this.lastAddedTime > 1000 &&
+      this.state === GameState.Playing
+    ) {
       this.lastAddedTime = Date.now();
       this.nodes.push(
         new Node(
@@ -28,6 +37,10 @@ export class Game {
       );
 
       this.addedNodes++;
+    }
+
+    if (this.addedNodes > 20) {
+      this.state = GameState.GameOver;
     }
 
     this.nodes.forEach((node) => {

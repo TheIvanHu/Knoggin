@@ -3,7 +3,7 @@ import "./styles.scss";
 import * as $ from "jquery";
 import { drawCircle, drawRectangle, drawText } from "./helper";
 import { init as initKontra } from "kontra";
-import game from "./Game";
+import game, { GameState } from "./Game";
 
 export const mouse = {
   x: 0,
@@ -35,10 +35,29 @@ const Uso: React.FC = () => {
 
       game.render(ctx);
 
-      if (!game.started) {
+      if (game.state === GameState.Ready) {
         drawText(
           ctx,
-          "Press space to start",
+          "Press any key to start",
+          canvas.width / 2,
+          canvas.height / 2,
+          "30px Outfit",
+          "white",
+        );
+      } else if (game.state === GameState.Playing) {
+        drawText(
+          ctx,
+          "Score: " + game.score,
+          10,
+          30,
+          "30px Outfit",
+          "white",
+          "left",
+        );
+      } else if (game.state === GameState.GameOver) {
+        drawText(
+          ctx,
+          "Game Over",
           canvas.width / 2,
           canvas.height / 2,
           "30px Outfit",
@@ -71,7 +90,7 @@ const Uso: React.FC = () => {
 
     $(document)
       .on("keydown", (e) => {
-        game.started = true;
+        game.state = GameState.Playing;
 
         const isAlphabet = /[a-zA-Z]/.test(String.fromCharCode(e.keyCode));
         if (isAlphabet) {
