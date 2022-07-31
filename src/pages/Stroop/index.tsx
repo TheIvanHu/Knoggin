@@ -1,7 +1,10 @@
 import { time } from "console";
 import * as React from "react";
-// import Timer from "./Timer";
+import "./styles.scss";
 import * as ReactDOM from "react-dom";
+// import "bootstrap";
+// import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap/dist/js/bootstrap.js";
 
 const Stroop: React.FC = () => {
   const [isGameStarted, setIsGameStarted] = React.useState(false);
@@ -48,7 +51,9 @@ const Stroop: React.FC = () => {
   function ColorList(props) {
     const colors = props.colors;
     const listItems = colors.map((c) => (
-      <button onClick={(event) => checkCorrect({ c })}>{c}</button>
+      <button style={{ color: c }} onClick={(event) => checkCorrect({ c })}>
+        {c}
+      </button>
     ));
     return <div>{listItems}</div>;
   }
@@ -57,18 +62,10 @@ const Stroop: React.FC = () => {
     array.sort(() => Math.random() - 0.5);
   }
 
-  function DisabledList(props) {
-    const colors = props.colors;
-    const listItems = colors.map((c) => (
-      <button onClick={(event) => checkCorrect({ c })} disabled={true}>
-        {c}
-      </button>
-    ));
-    return <div>{listItems}</div>;
-  }
-
   return !isGameOver ? (
-    <div>
+    <div className="Stroop-Container">
+      <h2>Stroop</h2>
+
       <h1 style={{ color: correctColor }}>
         {colors[Math.floor(Math.random() * colors.length)]}
       </h1>
@@ -77,11 +74,15 @@ const Stroop: React.FC = () => {
       </div>
     </div>
   ) : (
-    <div>
-      <h1 style={{ color: "black" }}>Game Over</h1>
+    <div className="Stroop-Container">
+      <h2>Stroop</h2>
+
+      <h1 style={{ color: "white" }}>Game Over</h1>
       <div>
-        <DisabledList colors={colors} />
-        <p>{(Date.now() - startTime) / 1000} seconds</p>
+        <h5>
+          {rightAnswer} correct answers and {wrongAnswer} wrong answers in{" "}
+          {(Date.now() - startTime) / 1000} seconds
+        </h5>
       </div>
     </div>
   );
