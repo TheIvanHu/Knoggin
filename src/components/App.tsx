@@ -9,6 +9,7 @@ import {
 import { MemoryRouter, Outlet, useLocation } from "react-router";
 import Home from "./Home";
 import SudoType from "../pages/SudoType";
+import Uso from "../pages/Uso";
 import SudoTypeData from "./SudotypeData";
 import UsoData from "./UsoData";
 import Menu from "./Menu";
@@ -22,6 +23,7 @@ const App = () => {
       <Routes>
         <Route path="/sudotype" element={<SudoType />} />
         <Route path="/SudoType-data" element={<SudoTypeData />} />
+        <Route path="/uso" element={<Uso />} />
         <Route path="/Uso-data" element={<UsoData />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/" element={<Home />} />
