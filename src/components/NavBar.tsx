@@ -1,21 +1,30 @@
-import { Component, Fragment, ReactNode } from "react";
-
+import * as React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "bootstrap";
+import { useNavigate } from "react-router";
 //import "bootstrap/dist/css/bootstrap.css";
 //import "bootstrap/dist/js/bootstrap.js";
 
-function AppNavBar() {
+const AppNavBar: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <Navbar expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="/?path=/">Knoggin</Navbar.Brand>
+        <Navbar.Brand
+          onClick={() => navigate("/")}
+          style={{
+            cursor: "pointer",
+          }}
+        >
+          Knoggin
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/?path=/menu-uso">Uso</Nav.Link>
-            <Nav.Link href="/?path=/menu-sudo">Sudotype</Nav.Link>
-            <Nav.Link href="/?path=/menu-stroop">Stroop</Nav.Link>
+            <Nav.Link onClick={() => navigate("/menu-uso")}>Uso</Nav.Link>
+            <Nav.Link onClick={() => navigate("/menu-sudo")}>Sudotype</Nav.Link>
+            <Nav.Link onClick={() => navigate("/menu-stroop")}>Stroop</Nav.Link>
 
             <NavDropdown title="Stats" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="/?path=/Uso-data">Uso</NavDropdown.Item>
@@ -37,5 +46,5 @@ function AppNavBar() {
       </Container>
     </Navbar>
   );
-}
+};
 export default AppNavBar;
