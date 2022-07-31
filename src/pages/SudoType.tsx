@@ -67,7 +67,7 @@ const KeyBoard: React.FC<any> = ({ randomKeys }) => {
   );
 };
 
-const SudoType: React.FC = () => {
+const Sudotype: React.FC = () => {
   const [correctText, setCorrectText] = React.useState("");
   const [amountOfWrongLetters, setAmountOfWrongLetters] = React.useState(0);
   const [wpm, setWpm] = React.useState(0);
@@ -163,7 +163,7 @@ const SudoType: React.FC = () => {
 
   return (
     <div id="home">
-      <h2>SudoType</h2>
+      <h2>Sudotype</h2>
       <br />
 
       <div
@@ -205,4 +205,4 @@ const SudoType: React.FC = () => {
   );
 };
 
-export default SudoType;
+export default Sudotype;

@@ -14,13 +14,13 @@ function AppNavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/?path=/uso">Uso</Nav.Link>
-            <Nav.Link href="/?path=/sudotype">SudoType</Nav.Link>
+            <Nav.Link href="/?path=/sudotype">Sudotype</Nav.Link>
             <Nav.Link href="/?path=/stroop">Strroop</Nav.Link>
 
             <NavDropdown title="Stats" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="/?path=/Uso-data">Uso</NavDropdown.Item>
-              <NavDropdown.Item href="/?path=/SudoType-data">
-                SudoType{" "}
+              <NavDropdown.Item href="/?path=/Sudotype-data">
+                Sudotype{" "}
               </NavDropdown.Item>
               <NavDropdown.Item href="/?path=/strroop-data">
                 Strroop
