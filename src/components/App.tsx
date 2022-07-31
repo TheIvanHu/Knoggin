@@ -31,8 +31,8 @@ const App = () => {
         />
         <Route path="/menu-uso" element={<Menu title="Uso" name="uso" />} />
         <Route
-          path="/menu-strroop"
-          element={<Menu title="Strroop" name="strroop" />}
+          path="/menu-stroop"
+          element={<Menu title="Stroop" name="stroop" />}
         />
       </Routes>
     </MemoryRouter>
