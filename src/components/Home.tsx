@@ -6,9 +6,6 @@ import Col from "react-bootstrap/Col";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
-import ryu from "./../assets/img/ryu.png";
-import kanna from "./../assets/img/kanna.jpg";
-import hiQ from "./../assets/img/hiQ.jpg";
 import { useNavigate } from "react-router-dom";
 import AppNavBar from "./NavBar";
 
@@ -46,7 +43,10 @@ function Home() {
             <h5 className="uso" onClick={() => goUso()}>
               !uso
             </h5>
-            <h6>insert cool description</h6>
+            <h6>
+              Assesses hand-eye coordination and bipedal multitasking as you
+              look, hover, and type at the same time.
+            </h6>
           </Col>
           <Col xs={2} className="three">
             <div className="sudoTypeLogo" onClick={() => goSudo()}>
@@ -55,7 +55,7 @@ function Home() {
             <h5 className="sudoType" onClick={() => goSudo()}>
               sudotype
             </h5>
-            <h6>insert cool description</h6>
+            <h6>Typing test with a randomized keybord just for you.</h6>
           </Col>
           <Col xs={2} className="four">
             <div className="strroopLogo" onClick={() => goStrroop()}>
@@ -64,7 +64,10 @@ function Home() {
             <h5 className="strroop" onClick={() => goStrroop()}>
               strroop
             </h5>
-            <h6>insert cool description</h6>
+            <h6>
+              Real-time observation game that tests your ability to distinguish
+              colours and text
+            </h6>
           </Col>
         </Row>
       </Container>
