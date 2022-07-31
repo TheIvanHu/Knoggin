@@ -11,23 +11,23 @@ const StroopSchema: Schema = new Schema({
   reactionTimes: {
     type: [Number],
     required: true,
-    default: []
+    default: [],
   },
   accuracy: {
     type: Number,
     required: true,
-    default: 0
+    default: 0,
   },
   totalTime: {
     type: Number,
     required: true,
-    default: 0
+    default: 0,
   },
   totalCorrect: {
     type: Number,
     required: true,
-    default: 0
-  }
+    default: 0,
+  },
 });
 
 export default model<IStroop>("Stroop", StroopSchema);
