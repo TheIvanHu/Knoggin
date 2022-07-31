@@ -36,16 +36,21 @@ const Stroop: React.FC = () => {
     }
 
     console.log(param);
-    if (rightAnswer == 2) {
-      setIsGameOver(true);
-    }
 
     var result = param.c;
     if (result == correctColor) {
       setCorrectColor(colors[Math.floor(Math.random() * colors.length)]);
       setRightAnswer(rightAnswer + 1);
+      if (rightAnswer == 9) {
+        setIsGameOver(true);
+        return;
+      }
     } else {
       setWrongAnswer(wrongAnswer + 1);
+      if (rightAnswer == 10) {
+        setIsGameOver(true);
+        return;
+      }
     }
   };
 
