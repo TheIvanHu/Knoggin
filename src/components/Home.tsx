@@ -10,6 +10,7 @@ import ryu from "./../assets/img/ryu.png";
 import kanna from "./../assets/img/kanna.jpg";
 import hiQ from "./../assets/img/hiQ.jpg";
 import { useNavigate } from "react-router-dom";
+import AppNavBar from "./NavBar";
 
 function Home() {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ function Home() {
 
   return (
     <div>
+      <AppNavBar />
       <Container className="flex">
         <Row>
           <Col xs={6} className="one">
@@ -38,12 +40,6 @@ function Home() {
             <h4 className="randomGame">start random game</h4>
           </Col>
           <Col xs={2} className="two">
-            {/* <img
-              src={ryu}
-              className="img-responsive"
-              width="100%"
-              onClick={() => goUso()}
-            /> */}
             <div className="usoLogo" onClick={() => goUso()}>
               !uso
             </div>
