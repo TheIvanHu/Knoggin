@@ -83,7 +83,7 @@ img:hover {
   cursor: pointer;
 }
 
-.sudoTypeLogo {
+.sudotypeLogo {
   display: flex;
   align-self: center;
   align-items: center;
@@ -98,16 +98,16 @@ img:hover {
   background: #cbcbe5;
 }
 
-.sudoType {
+.sudotype {
   margin-top: 10px;
   font-weight: bold;
 }
 
-.sudoTypeLogo:hover {
+.sudotypeLogo:hover {
   cursor: pointer;
 }
 
-.sudoType:hover {
+.sudotype:hover {
   color: #cbcbe5;
   cursor: pointer;
 }
@@ -139,4 +139,8 @@ img:hover {
 .stroop:hover {
   color: #c8beaf;
   cursor: pointer;
+}
+
+.green {
+  color: green;
 }

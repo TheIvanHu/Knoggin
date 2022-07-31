@@ -6,11 +6,9 @@ import Col from "react-bootstrap/Col";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
-import ryu from "./../assets/img/ryu.png";
-import kanna from "./../assets/img/kanna.jpg";
-import hiQ from "./../assets/img/hiQ.jpg";
 import { useNavigate } from "react-router-dom";
 import AppNavBar from "./NavBar";
+import sudotype from "./../assets/img/sudotype.png";
 
 function Home() {
   const navigate = useNavigate();
@@ -68,10 +66,16 @@ function Home() {
             <h6>train your hand-eye coordination</h6>
           </Col>
           <Col xs={2} className="three">
-            <div className="sudoTypeLogo" onClick={goSudo}>
+            {/* <div className="sudotypeLogo" onClick={goSudo}>
               a = j
-            </div>
-            <h5 className="sudoType" onClick={goSudo}>
+            </div> */}
+            <img
+              src={sudotype}
+              className="img-responsive"
+              width="100%"
+              onClick={goSudo}
+            />
+            <h5 className="sudotype" onClick={goSudo}>
               sudotype
             </h5>
             <h6>train your cognitive skills</h6>
@@ -83,7 +87,7 @@ function Home() {
             <h5 className="stroop" onClick={goStroop}>
               stroop
             </h5>
-            <h6>train your memory</h6>
+            <h6>train your reaction to incongruent stimuli</h6>
           </Col>
         </Row>
       </Container>
