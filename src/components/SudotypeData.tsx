@@ -9,7 +9,7 @@ import {
   Legend,
   Line,
 } from "recharts";
-class SudoTypeData extends Component {
+class SudotypeData extends Component {
   data = [
     {
       uv: 4000,
@@ -73,4 +73,4 @@ class SudoTypeData extends Component {
   }
 }
 
-export default SudoTypeData;
+export default SudotypeData;

@@ -49,10 +49,10 @@ function Home() {
             <h6>insert cool description</h6>
           </Col>
           <Col xs={2} className="three">
-            <div className="sudoTypeLogo" onClick={() => goSudo()}>
+            <div className="sudotypeLogo" onClick={() => goSudo()}>
               a = j
             </div>
-            <h5 className="sudoType" onClick={() => goSudo()}>
+            <h5 className="sudotype" onClick={() => goSudo()}>
               sudotype
             </h5>
             <h6>insert cool description</h6>
