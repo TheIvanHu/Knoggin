@@ -2,6 +2,7 @@ import { time } from "console";
 import * as React from "react";
 import "./styles.scss";
 import * as ReactDOM from "react-dom";
+import BackButton from "../../components/BackButton";
 // import "bootstrap";
 // import "bootstrap/dist/css/bootstrap.css";
 // import "bootstrap/dist/js/bootstrap.js";
@@ -62,29 +63,34 @@ const Stroop: React.FC = () => {
     array.sort(() => Math.random() - 0.5);
   }
 
-  return !isGameOver ? (
-    <div className="Stroop-Container">
-      <h2>Stroop</h2>
+  return (
+    <>
+      <BackButton />
+      {!isGameOver ? (
+        <div className="Stroop-Container">
+          <h2>Stroop</h2>
 
-      <h1 style={{ color: correctColor }}>
-        {colors[Math.floor(Math.random() * colors.length)]}
-      </h1>
-      <div>
-        <ColorList colors={colors} />
-      </div>
-    </div>
-  ) : (
-    <div className="Stroop-Container">
-      <h2>Stroop</h2>
+          <h1 style={{ color: correctColor }}>
+            {colors[Math.floor(Math.random() * colors.length)]}
+          </h1>
+          <div>
+            <ColorList colors={colors} />
+          </div>
+        </div>
+      ) : (
+        <div className="Stroop-Container">
+          <h2>Stroop</h2>
 
-      <h1 style={{ color: "white" }}>Game Over</h1>
-      <div>
-        <h5>
-          {rightAnswer} correct answers and {wrongAnswer} wrong answers in{" "}
-          {(Date.now() - startTime) / 1000} seconds
-        </h5>
-      </div>
-    </div>
+          <h1 style={{ color: "white" }}>Game Over</h1>
+          <div>
+            <h5>
+              {rightAnswer} correct answers and {wrongAnswer} wrong answers in{" "}
+              {(Date.now() - startTime) / 1000} seconds
+            </h5>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

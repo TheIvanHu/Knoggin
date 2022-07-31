@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./styles.scss";
 import { textToMatch, keys } from "./constants";
+import BackButton from "../../components/BackButton";
 
 const KeyBox: React.FC<any> = ({ letter, addUnderline }) => {
   return (
@@ -162,46 +163,49 @@ const Sudotype: React.FC = () => {
   }, [isGameOver]);
 
   return (
-    <div id="home">
-      <h2>Sudotype</h2>
-      <br />
+    <>
+      <BackButton />
+      <div id="home">
+        <h2>Sudotype</h2>
+        <br />
 
-      <div
-        style={{
-          maxWidth: "600px",
-          maxHeight: "200px",
-          overflow: "scroll",
-        }}
-      >
-        <span>{correctText}</span>
-        <span style={{ color: "grey" }}>
-          {textToMatch.slice(correctText.length)}
-        </span>
+        <div
+          style={{
+            maxWidth: "600px",
+            maxHeight: "200px",
+            overflow: "scroll",
+          }}
+        >
+          <span>{correctText}</span>
+          <span style={{ color: "grey" }}>
+            {textToMatch.slice(correctText.length)}
+          </span>
+        </div>
+
+        <br />
+
+        <input
+          autoFocus
+          className="input-race"
+          onKeyDown={onKeyDown}
+          onKeyUp={onKeyUp}
+          // onKeyPress={e => this.onKeyPress(e)}
+          // onChange={value => this.handleChange(value)}
+          // maxLength={quote.length}
+          // disabled={disabled || finished}
+          style={{
+            border: "none",
+            outline: "none",
+            height: "50px",
+          }}
+        />
+
+        <br />
+        <br />
+
+        <KeyBoard randomKeys={randomKeys} />
       </div>
-
-      <br />
-
-      <input
-        autoFocus
-        className="input-race"
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        // onKeyPress={e => this.onKeyPress(e)}
-        // onChange={value => this.handleChange(value)}
-        // maxLength={quote.length}
-        // disabled={disabled || finished}
-        style={{
-          border: "none",
-          outline: "none",
-          height: "50px",
-        }}
-      />
-
-      <br />
-      <br />
-
-      <KeyBoard randomKeys={randomKeys} />
-    </div>
+    </>
   );
 };
 
