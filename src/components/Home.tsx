@@ -8,7 +8,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import { useNavigate } from "react-router-dom";
 import AppNavBar from "./NavBar";
+import stroop from "./../assets/img/stroop.png";
 import sudotype from "./../assets/img/sudotype.png";
+import uso from "./../assets/img/uso.png";
 
 function Home() {
   const navigate = useNavigate();
@@ -57,9 +59,15 @@ function Home() {
             </h4>
           </Col>
           <Col xs={2} className="two">
-            <div className="usoLogo" onClick={goUso}>
+            {/* <div className="usoLogo" onClick={goUso}>
               !uso
-            </div>
+            </div> */}
+            <img
+              src={uso}
+              className="img-responsive"
+              width="100%"
+              onClick={goUso}
+            />
             <h5 className="uso" onClick={goUso}>
               !uso
             </h5>
@@ -81,9 +89,15 @@ function Home() {
             <h6>train your cognitive skills</h6>
           </Col>
           <Col xs={2} className="four">
-            <div className="stroopLogo" onClick={goStroop}>
+            {/* <div className="stroopLogo" onClick={goStroop}>
               red
-            </div>
+            </div> */}
+            <img
+              src={stroop}
+              className="img-responsive"
+              width="100%"
+              onClick={goStroop}
+            />
             <h5 className="stroop" onClick={goStroop}>
               stroop
             </h5>
