@@ -46,16 +46,16 @@ function Home() {
             <h5 className="uso" onClick={() => goUso()}>
               !uso
             </h5>
-            <h6>insert cool description</h6>
+            <h6>train your hand-eye coordination</h6>
           </Col>
           <Col xs={2} className="three">
-            <div className="sudotypeLogo" onClick={() => goSudo()}>
+            <div className="sudoTypeLogo" onClick={() => goSudo()}>
               a = j
             </div>
-            <h5 className="sudotype" onClick={() => goSudo()}>
+            <h5 className="sudoType" onClick={() => goSudo()}>
               sudotype
             </h5>
-            <h6>insert cool description</h6>
+            <h6>train your cognitive skills</h6>
           </Col>
           <Col xs={2} className="four">
             <div className="stroopLogo" onClick={() => goStroop()}>
@@ -64,7 +64,7 @@ function Home() {
             <h5 className="stroop" onClick={() => goStroop()}>
               stroop
             </h5>
-            <h6>insert cool description</h6>
+            <h6>train your memory</h6>
           </Col>
         </Row>
       </Container>

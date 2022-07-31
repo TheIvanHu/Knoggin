@@ -27,11 +27,13 @@ const AppNavBar: React.FC = () => {
             <Nav.Link onClick={() => navigate("/menu-stroop")}>Stroop</Nav.Link>
 
             <NavDropdown title="Stats" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="/?path=/Uso-data">Uso</NavDropdown.Item>
-              <NavDropdown.Item href="/?path=/Sudotype-data">
-                Sudotype{" "}
+              <NavDropdown.Item onClick={() => navigate("/Uso-data")}>
+                Uso
               </NavDropdown.Item>
-              <NavDropdown.Item href="/?path=/stroop-data">
+              <NavDropdown.Item onClick={() => navigate("/Sudotype-data")}>
+                Sudotype
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => navigate("/stroop-data")}>
                 Stroop
               </NavDropdown.Item>
             </NavDropdown>
