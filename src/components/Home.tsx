@@ -51,7 +51,7 @@ function Home() {
           <Col xs={6} className="one">
             <h1 className="header">Knockin' on your noggin</h1>
             <h4>
-              Cognitive games created to stimulate brain activity and tracks
+              Cognitive games created to stimulate brain activity and track
               neuro-performance
             </h4>
             <h4 className="randomGame" onClick={pickRandomGame}>
