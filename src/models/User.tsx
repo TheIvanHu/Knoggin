@@ -1,15 +1,20 @@
 import { model, Schema, Document } from "mongoose";
-import { IGame } from "./Game";
+import { IStroop } from "./Stroop";
+import { ISudotype } from "./Sudotype";
+import { IUso } from "./Uso";
+
 
 export interface IUser extends Document {
   username: string;
   email: string;
   password: string;
-  gamesPlayed: IGame["timesPlayed"];
+  stroopSessions: IStroop[];
+  sudotypeSessions: ISudotype[];
+  usoSessions: IUso[];
 }
 
 const UserSchema: Schema = new Schema({
-  username: { 
+  username: {
     type: String,
     required: true,
     unique: true
@@ -23,11 +28,21 @@ const UserSchema: Schema = new Schema({
     type: String,
     required: true
   },
-  gamesPlayed: {
-    type: Number,
-    required: true,
-    default: 0
-  }
+  stroopSessions: [{
+    type: Schema.Types.ObjectId,
+    ref: "Stroop",
+    default: []
+  }],
+  sudotypeSessions: [{
+    type: Schema.Types.ObjectId,
+    ref: "Sudotype",
+    default: []
+  }],
+  usoSessions: [{
+    type: Schema.Types.ObjectId,
+    ref: "Uso",
+    default: []
+  }]
 });
 
 export default model<IUser>("User", UserSchema);
