@@ -14,6 +14,7 @@ import SudoTypeData from "./SudotypeData";
 import UsoData from "./UsoData";
 import Menu from "./Menu";
 import StroopData from "./StroopData";
+import Stroop from "../pages/Stroop";
 
 const stroopText = `The Stroop Task is one of the best known psychological experiments named
   after John Ridley Stroop. The Stroop phenomenon demonstrates that it is 
@@ -62,6 +63,7 @@ const App = () => {
         <Route path="/SudoType-data" element={<SudoTypeData />} />
         <Route path="/uso" element={<Uso />} />
         <Route path="/Uso-data" element={<UsoData />} />{" "}
+        <Route path="/Stroop" element={<Stroop />} />
         <Route path="/Stroop-data" element={<StroopData />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/" element={<Home />} />
