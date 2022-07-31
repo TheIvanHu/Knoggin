@@ -74,7 +74,7 @@ const Uso: React.FC = () => {
 
   return (
     <div id="home">
-      <h2>Uso</h2>
+      <h2>Uso!</h2>
 
       <canvas
         id="canvas"

@@ -68,9 +68,6 @@ function Home() {
               width="100%"
               onClick={goUso}
             />
-            <h5 className="uso" onClick={goUso}>
-              !uso
-            </h5>
             <h6>train your hand-eye coordination</h6>
           </Col>
           <Col xs={2} className="three">
@@ -83,9 +80,6 @@ function Home() {
               width="100%"
               onClick={goSudo}
             />
-            <h5 className="sudotype" onClick={goSudo}>
-              sudotype
-            </h5>
             <h6>train your cognitive skills</h6>
           </Col>
           <Col xs={2} className="four">
@@ -98,9 +92,6 @@ function Home() {
               width="100%"
               onClick={goStroop}
             />
-            <h5 className="stroop" onClick={goStroop}>
-              stroop
-            </h5>
             <h6>train your reaction to incongruent stimuli</h6>
           </Col>
         </Row>
