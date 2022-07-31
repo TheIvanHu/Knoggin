@@ -4,6 +4,7 @@ import * as $ from "jquery";
 import { drawCircle, drawRectangle, drawText } from "./helper";
 import { init as initKontra } from "kontra";
 import game, { GameState } from "./Game";
+import BackButton from "../../components/BackButton";
 
 export const mouse = {
   x: 0,
@@ -73,17 +74,20 @@ const Uso: React.FC = () => {
   }, []);
 
   return (
-    <div id="home">
-      <h2>Uso!</h2>
+    <>
+      <BackButton />
+      <div id="home">
+        <h2>Uso!</h2>
 
-      <canvas
-        id="canvas"
-        style={{
-          cursor: "none",
-        }}
-      ></canvas>
-      <div className="uso__title"></div>
-    </div>
+        <canvas
+          id="canvas"
+          style={{
+            cursor: "none",
+          }}
+        ></canvas>
+        <div className="uso__title"></div>
+      </div>
+    </>
   );
 };
 
