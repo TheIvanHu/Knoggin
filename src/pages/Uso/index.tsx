@@ -1,18 +1,17 @@
 import * as React from "react";
 import "./styles.scss";
 import * as $ from "jquery";
-import { drawCircle } from "./helper";
+import { drawCircle, drawRectangle, drawText } from "./helper";
 import { init as initKontra } from "kontra";
+import game from "./Game";
 
-const mouse = {
+export const mouse = {
   x: 0,
   y: 0,
-  down: false,
 };
 
 const Uso: React.FC = () => {
   const [canvas, setCanvas] = React.useState<HTMLCanvasElement | null>(null);
-  const [ctx, setCtx] = React.useState<CanvasRenderingContext2D | null>(null);
   const [gameStarted, setGameStarted] = React.useState(false);
 
   React.useEffect(() => {
@@ -20,27 +19,45 @@ const Uso: React.FC = () => {
 
     const canvas = document.getElementById("canvas") as HTMLCanvasElement;
     const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth * 0.8;
-    canvas.height = window.innerHeight * 0.6;
+    canvas.width = window.innerWidth * 0.9;
+    canvas.height = window.innerHeight * 0.7;
 
-    const update = () => {};
+    const update = () => {
+      game.update();
+    };
 
     const animate = () => {
       requestAnimationFrame(() => animate());
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      drawRectangle(ctx, 0, 0, canvas.width, canvas.height, "black");
 
-      if (!gameStarted) {
+      game.render(ctx);
+
+      if (!game.started) {
+        drawText(
+          ctx,
+          "Press space to start",
+          canvas.width / 2,
+          canvas.height / 2,
+          "30px Outfit",
+          "white",
+        );
       }
-      ctx.fillText(
-        "Press any key to start",
-        canvas.width / 2,
-        canvas.height / 2,
-      );
 
-      drawCircle(ctx, mouse.x, mouse.y, 20, mouse.down ? "lime" : "red");
+      drawCircle(ctx, mouse.x, mouse.y, 20, game.pressedKey ? "lime" : "red");
+
+      if (game.pressedKey) {
+        drawText(
+          ctx,
+          game.pressedKey,
+          mouse.x,
+          mouse.y,
+          "30px Outfit",
+          "white",
+        );
+      }
 
       update();
     };
@@ -53,12 +70,18 @@ const Uso: React.FC = () => {
     });
 
     $(document)
-      .on("keydown", () => {
-        mouse.down = true;
-        setGameStarted(true);
+      .on("keydown", (e) => {
+        game.started = true;
+
+        const isAlphabet = /[a-zA-Z0-9-_ ]/.test(
+          String.fromCharCode(e.keyCode),
+        );
+        if (isAlphabet) {
+          game.pressedKey = String.fromCharCode(e.keyCode).toLowerCase();
+        }
       })
       .on("keyup", () => {
-        mouse.down = false;
+        game.pressedKey = null;
       });
   }, []);
 
