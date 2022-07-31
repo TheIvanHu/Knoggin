@@ -26,42 +26,61 @@ function Home() {
     navigate("/menu-stroop");
   };
 
+  const pickRandomGame = () => {
+    const random = Math.floor(Math.random() * 3);
+    switch (random) {
+      case 0:
+        goUso();
+        break;
+      case 1:
+        goSudo();
+        break;
+      case 2:
+        goStroop();
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div>
       <AppNavBar />
       <Container className="flex">
         <Row>
           <Col xs={6} className="one">
-            <h1 className="header">Knocking on your noggin</h1>
+            <h1 className="header">Knockin' on your noggin</h1>
             <h4>
               Cognitive games created to stimulate brain activity and tracks
               neuro-performance
             </h4>
-            <h4 className="randomGame">start random game</h4>
+            <h4 className="randomGame" onClick={pickRandomGame}>
+              start random game
+            </h4>
           </Col>
           <Col xs={2} className="two">
-            <div className="usoLogo" onClick={() => goUso()}>
+            <div className="usoLogo" onClick={goUso}>
               !uso
             </div>
-            <h5 className="uso" onClick={() => goUso()}>
+            <h5 className="uso" onClick={goUso}>
               !uso
             </h5>
             <h6>train your hand-eye coordination</h6>
           </Col>
           <Col xs={2} className="three">
-            <div className="sudoTypeLogo" onClick={() => goSudo()}>
+            <div className="sudoTypeLogo" onClick={goSudo}>
               a = j
             </div>
-            <h5 className="sudoType" onClick={() => goSudo()}>
+            <h5 className="sudoType" onClick={goSudo}>
               sudotype
             </h5>
             <h6>train your cognitive skills</h6>
           </Col>
           <Col xs={2} className="four">
-            <div className="stroopLogo" onClick={() => goStroop()}>
+            <div className="stroopLogo" onClick={goStroop}>
               red
             </div>
-            <h5 className="stroop" onClick={() => goStroop()}>
+            <h5 className="stroop" onClick={goStroop}>
               stroop
             </h5>
             <h6>train your memory</h6>
