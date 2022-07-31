@@ -9,6 +9,8 @@ import {
 import { MemoryRouter, Outlet, useLocation } from "react-router";
 import Home from "./Home";
 import SudoType from "../pages/SudoType";
+import SudoTypeData from "./SudotypeData";
+import UsoData from "./UsoData";
 import Menu from "./Menu";
 const App = () => {
   const initialSearchParam = new URLSearchParams(window.location.search);
@@ -17,10 +19,11 @@ const App = () => {
   return (
     <MemoryRouter initialEntries={["/", initialPath]}>
       <Routes>
-        <Route path="/chart" element={<Chart />} />
-
         <Route path="/sudotype" element={<SudoType />} />
+        <Route path="/SudoType-data" element={<SudoTypeData />} />
+        <Route path="/Uso-data" element={<UsoData />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/" element={<Menu />} />
       </Routes>
     </MemoryRouter>
   );

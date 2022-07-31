@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "../assets/scss/Menu.css";
 import styled from "styled-components";
+import AppNavBar from "./NavBar";
 
 import { Component } from "react";
 
@@ -26,6 +27,8 @@ class Menu extends Component {
   render() {
     return (
       <>
+        <AppNavBar />
+
         <div className="container">
           <div className="row align-items-center">
             <div className="col" id="left">

@@ -1,20 +1,13 @@
 import { Component, Fragment, ReactNode } from "react";
 
-import {
-  Container,
-  Nav,
-  Navbar,
-  NavDropdown,
-  Form,
-  Button,
-} from "react-bootstrap";
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "bootstrap";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap.js";
+//import "bootstrap/dist/css/bootstrap.css";
+//import "bootstrap/dist/js/bootstrap.js";
 
 function AppNavBar() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand href="#home">Knoggin</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -24,7 +17,7 @@ function AppNavBar() {
             <Nav.Link href="/?path=/sudotype">SudoType</Nav.Link>
             <Nav.Link href="/?path=/stroop">Strroop</Nav.Link>
 
-            <NavDropdown title="Stats" id="collasible-nav-dropdown">
+            <NavDropdown title="Stats" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="/?path=/Uso-data">Uso</NavDropdown.Item>
               <NavDropdown.Item href="/?path=/SudoType-data">
                 SudoType{" "}
