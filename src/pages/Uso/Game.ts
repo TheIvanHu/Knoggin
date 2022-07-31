@@ -1,6 +1,7 @@
 import { keys } from "../SudoType/constants";
 import Node from "./Node";
 import { mouse } from ".";
+import { drawText } from "./helper";
 
 export enum GameState {
   Ready,
@@ -23,7 +24,8 @@ export class Game {
   update(canvas: HTMLCanvasElement) {
     if (
       Date.now() - this.lastAddedTime > 1000 &&
-      this.state === GameState.Playing
+      this.state === GameState.Playing &&
+      this.addedNodes < 20
     ) {
       this.lastAddedTime = Date.now();
       this.nodes.push(
@@ -39,7 +41,7 @@ export class Game {
       this.addedNodes++;
     }
 
-    if (this.addedNodes > 20) {
+    if (this.addedNodes >= 20 && this.nodes.length === 0) {
       this.state = GameState.GameOver;
     }
 
@@ -68,10 +70,44 @@ export class Game {
     }
   }
 
-  render(ctx: CanvasRenderingContext2D) {
+  render(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
     this.nodes.forEach((node) => {
       node.render(ctx);
     });
+
+    this.drawGUI(ctx, canvas);
+  }
+
+  drawGUI(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) {
+    if (game.state === GameState.Ready) {
+      drawText(
+        ctx,
+        "Press any key to start",
+        canvas.width / 2,
+        canvas.height / 2,
+        "30px Outfit",
+        "white",
+      );
+    } else if (game.state === GameState.Playing) {
+      drawText(
+        ctx,
+        "Score: " + game.score,
+        10,
+        30,
+        "30px Outfit",
+        "white",
+        "left",
+      );
+    } else if (game.state === GameState.GameOver) {
+      drawText(
+        ctx,
+        "Game Over",
+        canvas.width / 2,
+        canvas.height / 2,
+        "30px Outfit",
+        "white",
+      );
+    }
   }
 }
 

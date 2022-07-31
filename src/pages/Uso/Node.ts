@@ -8,7 +8,7 @@ export default class Node {
   color: string;
   letter: string;
 
-  duration = 5000;
+  duration = 1000;
 
   matched: boolean;
 

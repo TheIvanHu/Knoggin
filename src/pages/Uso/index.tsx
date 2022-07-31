@@ -33,37 +33,7 @@ const Uso: React.FC = () => {
 
       drawRectangle(ctx, 0, 0, canvas.width, canvas.height, "black");
 
-      game.render(ctx);
-
-      if (game.state === GameState.Ready) {
-        drawText(
-          ctx,
-          "Press any key to start",
-          canvas.width / 2,
-          canvas.height / 2,
-          "30px Outfit",
-          "white",
-        );
-      } else if (game.state === GameState.Playing) {
-        drawText(
-          ctx,
-          "Score: " + game.score,
-          10,
-          30,
-          "30px Outfit",
-          "white",
-          "left",
-        );
-      } else if (game.state === GameState.GameOver) {
-        drawText(
-          ctx,
-          "Game Over",
-          canvas.width / 2,
-          canvas.height / 2,
-          "30px Outfit",
-          "white",
-        );
-      }
+      game.render(ctx, canvas);
 
       drawCircle(ctx, mouse.x, mouse.y, 20, game.pressedKey ? "lime" : "red");
 
