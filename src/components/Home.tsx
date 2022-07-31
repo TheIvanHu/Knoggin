@@ -6,9 +6,6 @@ import Col from "react-bootstrap/Col";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
-import ryu from "./../assets/img/ryu.png";
-import kanna from "./../assets/img/kanna.jpg";
-import hiQ from "./../assets/img/hiQ.jpg";
 import { useNavigate } from "react-router-dom";
 import AppNavBar from "./NavBar";
 
