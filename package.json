@@ -1,5 +1,5 @@
 {
-  "name": "react-webpack-typescript-starter",
+  "name": "knoggin-app",
   "version": "0.1.0",
   "description": "Starter kit for React, Webpack (with Hot Module Replacement), Typescript and Babel.",
   "keywords": [
@@ -12,7 +12,7 @@
     "starter",
     "boilerplate"
   ],
-  "author": "Viktor Persson",
+  "author": "Victor Wei, Ivan Hu, Emma Song, Leo Huang, Ada Wang",
   "license": "MIT",
   "repository": {
     "type": "git",
