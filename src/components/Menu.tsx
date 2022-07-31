@@ -25,7 +25,8 @@ const Menu: React.FC<any> = (props) => {
     }
   };
 
-  // const arr = props.text.split("/");
+  const arr = props.text.split("/");
+  console.log(arr);
 
   return (
     <>
@@ -35,14 +36,15 @@ const Menu: React.FC<any> = (props) => {
           <div className="col" id="left">
             <h1>{props.title}</h1>
             <button className="btn" onClick={() => startClick(props.name)}>
-              Play game :3
+              Play game
             </button>
           </div>
           <div className="col" id="right">
             <h3>About this test</h3>
-            <p>
-              {props.text}
-            </p>
+            {arr.map((a) => {
+              return <p>{a}</p>;
+            })}
+            {/* <p>{props.text}</p> */}
           </div>
         </div>
       </div>
