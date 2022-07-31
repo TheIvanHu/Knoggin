@@ -54,7 +54,6 @@ function Home() {
           </Col>
           <Col xs={2} className="three">
             <div className="sudoTypeLogo" onClick={() => goSudo()}>
-              {" "}
               a = j
             </div>
             <h5 className="sudoType" onClick={() => goSudo()}>
