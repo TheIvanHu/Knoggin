@@ -5,10 +5,8 @@ import * as React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "../assets/scss/Menu.css";
-import styled from "styled-components";
 import AppNavBar from "./NavBar";
 
-import { Component } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Menu: React.FC<any> = (props) => {
@@ -27,8 +25,8 @@ const Menu: React.FC<any> = (props) => {
 
   return (
     <>
-    <AppNavBar />
-      <div className="container">
+      <AppNavBar />
+      <div className="container-menu">
         <div className="row align-items-center">
           <div className="col" id="left">
             <h1>{props.title}</h1>

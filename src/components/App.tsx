@@ -12,7 +12,6 @@ import SudoType from "../pages/SudoType";
 import SudoTypeData from "./SudotypeData";
 import UsoData from "./UsoData";
 import Menu from "./Menu";
-import Uso from "../pages/uso/uso";
 const App = () => {
   const initialSearchParam = new URLSearchParams(window.location.search);
   const initialPath = initialSearchParam.get("path") || "/";
