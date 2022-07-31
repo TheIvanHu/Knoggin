@@ -13,7 +13,7 @@ import Uso from "../pages/Uso";
 import SudoTypeData from "./SudotypeData";
 import UsoData from "./UsoData";
 import Menu from "./Menu";
-
+import StroopData from "./StroopData";
 const App = () => {
   const initialSearchParam = new URLSearchParams(window.location.search);
   const initialPath = initialSearchParam.get("path") || "/";
@@ -24,7 +24,8 @@ const App = () => {
         <Route path="/sudotype" element={<SudoType />} />
         <Route path="/SudoType-data" element={<SudoTypeData />} />
         <Route path="/uso" element={<Uso />} />
-        <Route path="/Uso-data" element={<UsoData />} />
+        <Route path="/Uso-data" element={<UsoData />} />{" "}
+        <Route path="/Stroop-data" element={<StroopData />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/" element={<Home />} />
         <Route
